@@ -16,5 +16,8 @@ jekyll-minifier:
 
 kramdown:
   input: GFM
+  hard_wrap: false
+  parse_block_html: false
+  parse_span_html: false
   syntax_highlighter_opts:
     disable: true
