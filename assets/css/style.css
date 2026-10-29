@@ -406,6 +406,9 @@ a:hover {
         margin-top: 5px;
         font-size: 12px;
         min-width: 0;
+        white-space: normal;
+        overflow-wrap: break-word;
+        overflow-x: hidden;
     }
 
     .links-block .post-title-link {
