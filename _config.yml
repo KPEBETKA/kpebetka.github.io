@@ -8,14 +8,13 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-minifier
-  - jekyll-commonmark
 
 jekyll-minifier:
   remove_comments: true
   compress_css: true
   compress_javascript: true
 
-markdown: CommonMark
-commonmark:
-  options: ["SMART", "FOOTNOTES"]
-  extensions: ["strikethrough", "autolink", "table"]
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    disable: true
