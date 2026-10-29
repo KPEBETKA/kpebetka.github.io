@@ -18,6 +18,3 @@ kramdown:
   input: GFM
   syntax_highlighter_opts:
     disable: true
-
-feed:
-  excerpt_only: true
