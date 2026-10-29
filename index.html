@@ -1,6 +1,14 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-</body>
-</html>
+---
+layout: default
+---
+<main class="center-col">
+  {% for post in site.posts %}
+  <div class="post-block">
+    <span class="syn-comment"># Date: {{ post.date | date: "%d.%m.%Y" }}</span><br>
+    <span class="syn-keyword">declare</span> <span class="syn-var">-A entry_{{ forloop.rindex }}</span> = (<br>
+    <span class="indent">[<span class="syn-string">Title</span>] = <a href="{{ post.url | relative_url }}" class="post-title-link">"{{ post.title | escape }}"</a></span>
+    <span class="indent">[<span class="syn-string">Desc</span>] = <span class="syn-string">"{{ post.description | escape }}"</span></span>
+    )<br>
+  </div>
+  {% endfor %}
+</main>

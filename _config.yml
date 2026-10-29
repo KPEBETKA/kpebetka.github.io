@@ -1,0 +1,20 @@
+title: "kpebetka // blog"
+description: "$ cat /dev/notes"
+baseurl: ""
+url: "https://kpebetka.github.io"
+encoding: utf-8
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-minifier
+
+jekyll-minifier:
+  remove_comments: true
+  compress_css: true
+  compress_javascript: true
+
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    disable: true

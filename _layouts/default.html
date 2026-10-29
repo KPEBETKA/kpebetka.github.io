@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+  {% seo %}
+  {% feed_meta %}
+</head>
+<body>
+  <div class="layout">
+    <aside class="left-col">
+      <div class="avatar-container">
+        <img src="https://github.com/kpebetka.png" alt="kpebetka avatar">
+      </div>
+      <div class="logo-text">
+        <span class="syn-keyword">export</span> <span class="syn-var">USER</span> = <span class="syn-string">"kpebetka"</span><br>
+        <span class="subtitle syn-comment"># Blog</span>
+      </div>
+      <div class="links-block">
+        <span class="syn-comment"># Links</span><br>
+        <span class="syn-keyword">export</span> <span class="syn-var">GITHUB</span> = <a href="https://github.com/kpebetka" target="_blank" rel="noopener noreferrer" class="post-title-link">"https://github.com/kpebetka"</a><br>
+        <br>
+        <span class="syn-keyword">declare</span> <span class="syn-var">-a projects</span> = (<br>
+        <span class="indent"><a href="https://burnafterreading.kpebetka.net/" target="_blank" rel="noopener noreferrer" class="post-title-link">"One-time secret messages"</a></span>)<br>
+        <br>
+        <span class="syn-keyword">export</span> <span class="syn-var">RSS</span> = <a href="{{ '/feed.xml' | relative_url }}" target="_blank" rel="noopener noreferrer" class="post-title-link">"/feed.xml"</a><br>
+      </div>
+    </aside>
+    {{ content }}
+  </div>
+</body>
+</html>
