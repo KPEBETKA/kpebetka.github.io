@@ -1,0 +1,40 @@
+---
+layout: default
+title: "Карта сайта"
+permalink: /sitemap.html
+---
+<main class="content-col">
+  <a href="{{ '/' | relative_url }}" class="back-link">← cd ..</a>
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="article-title">Карта сайта</h1>
+      <div class="article-desc syn-string">Список всех страниц и записей блога</div>
+    </header>
+
+    <div class="post-content">
+      <h2>Записи (Posts)</h2>
+      <ul>
+        {% for post in site.posts %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a> 
+            <span class="syn-comment">({{ post.date | date: "%d.%m.%Y" }})</span>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <h2>Страницы (Pages)</h2>
+      <ul>
+        {% for page in site.pages %}
+          {% unless page.url contains 'feed.xml' or page.url contains 'sitemap' or page.url contains '.txt' or page.url contains '.xml' or page.url contains '/assets/' %}
+            <li>
+              <a href="{{ page.url | relative_url }}">
+                {{ page.title | default: page.name }}
+              </a>
+            </li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
+  </article>
+</main>
