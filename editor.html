@@ -137,6 +137,14 @@
         .preview .img-block img { max-width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border-strong); box-shadow: var(--card-shadow); display: block; margin: 0 auto; }
         .preview .img-block figcaption { margin-top: 8px; font-size: 12px; color: var(--muted); font-style: italic; }
 
+        .preview mark {
+            background-color: var(--text);
+            color: var(--bg);
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: var(--surface); }
         ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
@@ -197,6 +205,31 @@
     </div>
 
     <script>
+        marked.use({
+            extensions: [
+                {
+                    name: 'mark',
+                    level: 'inline',
+                    start(src) { return src.indexOf('=='); },
+                    tokenizer(src) {
+                        const rule = /^==([^=]+)==/;
+                        const match = rule.exec(src);
+                        if (match) {
+                            return {
+                                type: 'mark',
+                                raw: match[0],
+                                text: match[1].trim(),
+                                tokens: this.lexer.inlineTokens(match[1].trim())
+                            };
+                        }
+                    },
+                    renderer(token) {
+                        return `<mark>${this.parser.parseInline(token.tokens)}</mark>`;
+                    }
+                }
+            ]
+        });
+
         marked.setOptions({
             highlight: function(code, lang) {
                 if (lang && hljs.getLanguage(lang)) {
@@ -226,7 +259,6 @@
             const previewDiv = document.getElementById('preview-output');
             const markdownText = textareaEl.value;
 
-            // Запоминаем процент прокрутки textarea перед обновлением
             const sourceMax = textareaEl.scrollHeight - textareaEl.clientHeight;
             const scrollPercentage = sourceMax > 0 ? textareaEl.scrollTop / sourceMax : 0;
 
@@ -307,7 +339,6 @@
                 });
             });
 
-            // Восстанавливаем процент прокрутки в предпросмотре после рендера
             const targetMax = previewDiv.scrollHeight - previewDiv.clientHeight;
             if (targetMax > 0) {
                 isSyncingScroll = true;
@@ -349,7 +380,6 @@
             URL.revokeObjectURL(url);
         }
 
-        // --- Логика синхронизации скролла ---
         let isSyncingScroll = false;
         const textareaEl = document.getElementById('markdown-input');
         const previewEl = document.getElementById('preview-output');
@@ -377,7 +407,6 @@
         textareaEl.addEventListener('scroll', syncScroll);
         previewEl.addEventListener('scroll', syncScroll);
 
-        // Первичный рендер
         updatePreview();
     </script>
 </body>
