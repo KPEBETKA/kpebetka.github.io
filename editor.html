@@ -29,11 +29,23 @@
         .actions button { background-color: var(--surface-2); color: var(--accent); border: 1px solid var(--border); padding: 6px 12px; border-radius: var(--radius); font-family: var(--font-mono); font-size: 12px; cursor: pointer; transition: all 0.2s; margin-left: 10px; }
         .actions button:hover { background-color: var(--accent); color: var(--bg); }
 
-        .editor-layout { display: flex; flex: 1; overflow: hidden; }
-        .meta-sidebar { width: 250px; background-color: var(--surface); border-right: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto; }
-        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .editor-layout { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+        
+        .meta-sidebar { 
+            width: 100%; 
+            background-color: var(--surface); 
+            border-bottom: 1px solid var(--border); 
+            padding: 15px 20px; 
+            display: flex; 
+            flex-direction: row; 
+            flex-wrap: wrap;
+            gap: 15px; 
+            align-items: center;
+        }
+        
+        .form-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 150px; }
         .form-group label { font-size: 12px; color: var(--muted); }
-        .form-group input { background-color: var(--surface-2); border: 1px solid var(--border); color: var(--text); padding: 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 12px; outline: none; }
+        .form-group input { background-color: var(--surface-2); border: 1px solid var(--border); color: var(--text); padding: 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 12px; outline: none; width: 100%; }
         .form-group input:focus { border-color: var(--accent); }
 
         .workspace { display: flex; flex: 1; overflow: hidden; }
@@ -151,9 +163,6 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
         
         @media (max-width: 900px) {
-            .editor-layout { flex-direction: column; }
-            .meta-sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
-            .form-group { flex: 1; min-width: 120px; }
             .workspace { flex-direction: column; }
             .pane { width: 100%; height: 50%; }
             textarea, .preview { border-left: none; border-top: 1px solid var(--border); }
@@ -359,15 +368,17 @@
 
             const safeTitle = title.replace(/"/g, '\\"');
             const safeDesc = desc.replace(/"/g, '\\"');
+            const permalink = `/${dateVal.replace(/-/g, '/')}/`;
 
             let frontMatter = `---\nlayout: post\n`;
             frontMatter += `title: "${safeTitle}"\n`;
             if (safeDesc) frontMatter += `description: "${safeDesc}"\n`;
-            frontMatter += `date: ${dateVal} 12:00:00 +0000\n---\n\n`;
+            frontMatter += `date: ${dateVal} 12:00:00 +0000\n`;
+            frontMatter += `permalink: ${permalink}\n`;
+            frontMatter += `---\n\n`;
 
             const fullPost = frontMatter + content;
-            const slug = title.toLowerCase().replace(/[^a-zа-яё0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
-            const fileName = `${dateVal}-${slug || 'post'}.md`;
+            const fileName = `${dateVal}.md`;
 
             const blob = new Blob([fullPost], { type: 'text/markdown;charset=utf-8' });
             const url = URL.createObjectURL(blob);
