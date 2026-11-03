@@ -172,9 +172,11 @@ a:hover {
     width: 100%;
 }
 
+/* ИСПРАВЛЕНИЕ ЗДЕСЬ */
 .content-col {
     font-size: 14px;
-    min-width: 0;
+    width: 0;          /* Текст не раздвигает родительский контейнер */
+    min-width: 100%;   /* Блок занимает ровно 100% ширины шапки */
 }
 
 .back-link {
@@ -395,7 +397,8 @@ a:hover {
     .top-row,
     .neofetch-container,
     .links-block,
-    .center-col {
+    .center-col,
+    .content-col {
         width: 100%;
     }
     
