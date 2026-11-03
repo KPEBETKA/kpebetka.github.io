@@ -11,7 +11,7 @@
   {% seo title=false %}
   {% feed_meta %}
 </head>
-<body>
+<body class="{% if page.layout == 'post' %}page-post{% else %}page-index{% endif %}">
   <div class="layout">
     <header class="top-row">
       <div class="neofetch-container">
@@ -26,9 +26,9 @@
             <div class="key">Branch</div><div class="val">: main</div>
             <div class="key">Commits</div><div class="val">: {{ site.posts.size }}</div>
           </div>
-          <div class="divider"></div>
+          <div class="divider divider-export"></div>
           <div class="export-content">
-            <span class="syn-keyword">export</span> <span class="syn-var">GITHUB</span> = <a href="https://github.com/kpebetka" target="_blank" rel="noopener noreferrer" class="post-title-link">"https://github.com/kpebetka"</a><br>
+            <span class="syn-keyword">export</span> <span class="syn-var">GIT</span> = <a href="https://github.com/kpebetka" target="_blank" rel="noopener noreferrer" class="post-title-link">"https://github.com/kpebetka"</a><br>
             <span class="syn-keyword">export</span> <span class="syn-var">RSS</span> = <a href="{{ '/feed.xml' | relative_url }}" target="_blank" rel="noopener noreferrer" class="post-title-link">"/feed.xml"</a>
           </div>
         </div>

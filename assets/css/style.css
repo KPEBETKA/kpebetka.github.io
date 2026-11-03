@@ -391,7 +391,7 @@ a:hover {
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-/* --- ИСПРАВЛЕННЫЙ МОБИЛЬНЫЙ АДАПТИВ --- */
+/* --- МОБИЛЬНЫЙ АДАПТИВ --- */
 @media (max-width: 800px) {
     body {
         padding: 20px 15px 40px;
@@ -459,4 +459,17 @@ a:hover {
     
     .code-header { padding: 6px 10px; font-size: 11px; }
     .post-content pre { padding: 10px; }
+
+    /* Специфичные правки для страницы просмотра статьи */
+    .page-post .links-block,
+    .page-post .export-content,
+    .page-post .divider-export {
+        display: none;
+    }
+    
+    .page-post .neofetch-container {
+        flex-direction: row;
+        gap: 15px;
+        margin-bottom: 0;
+    }
 }
