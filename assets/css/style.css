@@ -42,67 +42,29 @@ a:hover {
 }
 
 .layout {
-    display: grid;
-    grid-template-columns: 343px minmax(400px, 1fr);
-    gap: 40px;
-    max-width: 983px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.left-col {
     display: flex;
     flex-direction: column;
-    min-width: 0;
-}
-
-.links-block {
-    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    padding: 10px;
-    font-size: 13px;
-    line-height: 1.5;
-    white-space: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
+    gap: 25px;
+    width: max-content;
     max-width: 100%;
+    margin: 0 auto;
 }
 
-.links-block::-webkit-scrollbar {
-    display: none;
-}
-
-.links-block .post-title-link {
-    font-size: 13px;
-}
-
-.syn-comment { color: var(--muted); }
-.syn-keyword { color: var(--accent); font-weight: 700; }
-.syn-var { color: #9cdcfe; }
-.syn-string { color: #ce9178; }
-
-.indent {
-    padding-left: 20px;
-    display: block;
-}
-
-.center-col {
-    font-size: 13px;
-    min-width: 0;
+.top-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
 }
 
 .neofetch-container {
     display: flex;
-    width: 100%;
     gap: 15px;
-    margin-bottom: 15px;
     align-items: flex-start;
+    flex-shrink: 0;
 }
 
 .neofetch-container .avatar-container {
-    width: 145px;
+    width: 135px;
     border: 1px solid var(--border-strong);
     border-radius: var(--radius);
     overflow: hidden;
@@ -112,8 +74,8 @@ a:hover {
 
 .neofetch-container .avatar-header {
     background: var(--surface-2);
-    padding: 4px 8px;
-    font-size: 13px;
+    padding: 3px 5px;
+    font-size: 12px;
     color: var(--muted);
     border-bottom: 1px solid var(--border-strong);
     white-space: nowrap;
@@ -129,8 +91,6 @@ a:hover {
 .neofetch-info {
     font-size: 13px;
     line-height: 1.5;
-    flex: 1;
-    min-width: 0;
     padding-top: 2px;
 }
 
@@ -139,11 +99,11 @@ a:hover {
     font-weight: bold;
 }
 
-.neofetch-info .divider {
-    color: var(--muted);
-    display: block;
-    margin: 4px 0 8px 0;
-    letter-spacing: -1px;
+.divider {
+    border-bottom: 1px dashed var(--muted);
+    margin: 14px 0;
+    height: 0;
+    width: 100%;
 }
 
 .term-content {
@@ -162,14 +122,54 @@ a:hover {
     color: var(--text);
 }
 
+.export-content {
+    margin-bottom: 8px;
+}
+
+.links-block, 
 .post-block {
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--card-shadow);
+}
+
+.links-block {
+    flex-shrink: 0;
+    width: max-content;
+    height: 166px;
+    padding: 15px 20px 15px 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.links-block::-webkit-scrollbar {
+    display: none;
+}
+
+.post-block {
     padding: 20px;
     margin-bottom: 30px;
     overflow-wrap: break-word;
+}
+
+.syn-comment { color: var(--muted); }
+.syn-keyword { color: var(--accent); font-weight: 700; }
+.syn-var { color: #9cdcfe; }
+.syn-string { color: #ce9178; }
+
+.indent {
+    padding-left: 20px;
+    display: block;
+}
+
+.center-col {
+    font-size: 13px;
+    min-width: 0;
+    width: 100%;
 }
 
 .content-col {
@@ -391,46 +391,46 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
 @media (max-width: 800px) {
-    body {
-        padding: 20px 15px 60px;
+    .layout,
+    .top-row,
+    .neofetch-container,
+    .links-block,
+    .center-col {
+        width: 100%;
     }
-    .layout {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    .left-col {
-        flex-direction: row;
-        align-items: flex-start;
-        flex-wrap: wrap;
+    
+    .top-row {
+        flex-direction: column;
         gap: 15px;
     }
-    .neofetch-container {
-        width: 100%;
-    }
-    .avatar-container {
-        width: 145px;
+    
+    .neofetch-container .avatar-container {
         margin-bottom: 0;
     }
+    
     .links-block {
-        width: 100%;
-        margin-top: 5px;
-        min-width: 0;
+        height: auto;
+        padding: 15px;
         white-space: normal;
         overflow-wrap: break-word;
         overflow-x: hidden;
     }
+    
     .post-block {
         padding: 15px;
     }
+    
     .article-title { font-size: 20px; }
     .article-desc { font-size: 14px; }
     .post-content { font-size: 13.5px; }
+    
     .post-content h1 { font-size: 20px; }
     .post-content h2 { font-size: 18px; }
     .post-content h3 { font-size: 16px; }
     .post-content h4 { font-size: 14px; }
     .post-content h5 { font-size: 13px; }
     .post-content h6 { font-size: 12px; }
+    
     .code-header { padding: 6px 10px; font-size: 11px; }
     .post-content pre { padding: 10px; }
 }
