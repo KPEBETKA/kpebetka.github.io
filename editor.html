@@ -35,18 +35,7 @@ sitemap: false
 
         .editor-layout { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
         
-        .meta-sidebar { 
-            width: 100%; 
-            background-color: var(--surface); 
-            border-bottom: 1px solid var(--border); 
-            padding: 15px 20px; 
-            display: flex; 
-            flex-direction: row; 
-            flex-wrap: wrap;
-            gap: 15px; 
-            align-items: center;
-        }
-        
+        .meta-sidebar { width: 100%; background-color: var(--surface); border-bottom: 1px solid var(--border); padding: 15px 20px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 15px; align-items: center; }
         .form-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 150px; }
         .form-group label { font-size: 12px; color: var(--muted); }
         .form-group input { background-color: var(--surface-2); border: 1px solid var(--border); color: var(--text); padding: 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 12px; outline: none; width: 100%; }
@@ -59,11 +48,21 @@ sitemap: false
         textarea { flex: 1; background-color: var(--bg); color: #ce9178; border: none; border-left: 1px solid var(--border); padding: 20px; font-family: var(--font-mono); font-size: 14px; line-height: 1.6; resize: none; outline: none; }
         .preview { flex: 1; background-color: var(--bg); border-left: 1px solid var(--border); padding: 30px; overflow-y: auto; line-height: 1.7; font-size: 14px; }
 
-        .preview h1, .preview h2, .preview h3, .preview h4 { color: var(--text); margin-top: 1.8em; margin-bottom: 0.8em; font-weight: 700; line-height: 1.4; }
+        .preview h1, .preview h2, .preview h3, .preview h4, .preview h5, .preview h6 { color: var(--text); margin-top: 1.8em; margin-bottom: 0.8em; font-weight: 700; line-height: 1.4; }
+        .preview h1 { font-size: 24px; }
         .preview h2 { font-size: 20px; }
         .preview h3 { font-size: 18px; }
         .preview h4 { font-size: 16px; }
-        .preview h2::before, .preview h3::before, .preview h4::before { content: "// "; color: var(--muted); }
+        .preview h5 { font-size: 14px; }
+        .preview h6 { font-size: 13px; }
+        
+        .preview h1::before { content: "# "; color: var(--muted); }
+        .preview h2::before { content: "## "; color: var(--muted); }
+        .preview h3::before { content: "### "; color: var(--muted); }
+        .preview h4::before { content: "#### "; color: var(--muted); }
+        .preview h5::before { content: "##### "; color: var(--muted); }
+        .preview h6::before { content: "###### "; color: var(--muted); }
+
         .preview p { margin-bottom: 1.2em; }
         .preview a { color: var(--accent); text-decoration: none; }
         .preview a:hover { text-decoration: underline; }
@@ -74,92 +73,22 @@ sitemap: false
         
         .preview code:not(pre code) { background-color: var(--surface-2); color: #ce9178; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); font-size: 0.9em; }
         
-        .preview .code-container {
-            background-color: var(--surface);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius);
-            margin-bottom: 1.5em;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            text-align: left;
-        }
+        .preview .code-container { background-color: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius); margin-bottom: 1.5em; overflow: hidden; box-shadow: var(--card-shadow); text-align: left; }
+        .preview .code-header { display: flex; justify-content: space-between; align-items: center; background-color: var(--surface-2); padding: 6px 15px; font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--border); }
+        .preview .code-lang { text-transform: uppercase; font-weight: 700; }
+        .preview .code-actions { display: flex; gap: 10px; }
+        .preview .code-actions button { background: transparent; border: none; color: var(--muted); cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; border-radius: 4px; }
+        .preview .code-actions button:hover { color: var(--accent); background-color: rgba(77, 184, 106, 0.1); }
+        .preview .code-actions svg { width: 14px; height: 14px; }
 
-        .preview .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--surface-2);
-            padding: 6px 15px;
-            font-size: 12px;
-            color: var(--muted);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .preview .code-lang {
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .preview .code-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .preview .code-actions button {
-            background: transparent;
-            border: none;
-            color: var(--muted);
-            cursor: pointer;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s;
-            border-radius: 4px;
-        }
-
-        .preview .code-actions button:hover {
-            color: var(--accent);
-            background-color: rgba(77, 184, 106, 0.1);
-        }
-
-        .preview .code-actions svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .preview pre {
-            margin: 0 !important;
-            border: none !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            padding: 15px !important;
-            background-color: var(--surface);
-            overflow-x: auto;
-            white-space: pre;
-        }
-
-        .preview pre code {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            line-height: 1.5;
-            display: block;
-            background: transparent !important;
-            padding: 0 !important;
-            border: none !important;
-        }
+        .preview pre { margin: 0 !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; padding: 15px !important; background-color: var(--surface); overflow-x: auto; white-space: pre; }
+        .preview pre code { font-family: var(--font-mono); font-size: 13px; line-height: 1.5; display: block; background: transparent !important; padding: 0 !important; border: none !important; }
         
         .preview .img-block { margin: 2em auto; text-align: center; }
         .preview .img-block img { max-width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border-strong); box-shadow: var(--card-shadow); display: block; margin: 0 auto; }
         .preview .img-block figcaption { margin-top: 8px; font-size: 12px; color: var(--muted); font-style: italic; }
 
-        .preview mark {
-            background-color: var(--text);
-            color: var(--bg);
-            padding: 0 6px;
-            border-radius: 4px;
-            font-weight: 700;
-        }
+        .preview mark { background-color: var(--text); color: var(--bg); padding: 0 6px; border-radius: 4px; font-weight: 700; }
 
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: var(--surface); }
@@ -219,34 +148,24 @@ sitemap: false
 
     <script>
         marked.use({
-            extensions: [
-                {
-                    name: 'mark',
-                    level: 'inline',
-                    start(src) { return src.indexOf('=='); },
-                    tokenizer(src) {
-                        const rule = /^==([^=]+)==/;
-                        const match = rule.exec(src);
-                        if (match) {
-                            return {
-                                type: 'mark',
-                                raw: match[0],
-                                text: match[1].trim(),
-                                tokens: this.lexer.inlineTokens(match[1].trim())
-                            };
-                        }
-                    },
-                    renderer(token) {
-                        return `<mark>${this.parser.parseInline(token.tokens)}</mark>`;
-                    }
+            extensions: [{
+                name: 'mark',
+                level: 'inline',
+                start: src => src.indexOf('=='),
+                tokenizer(src) {
+                    const match = /^==([^=]+)==/.exec(src);
+                    if (match) return { type: 'mark', raw: match[0], text: match[1].trim(), tokens: this.lexer.inlineTokens(match[1].trim()) };
+                },
+                renderer(token) {
+                    return `<mark>${this.parser.parseInline(token.tokens)}</mark>`;
                 }
-            ]
+            }]
         });
 
         marked.setOptions({
-            highlight: function(code, lang) {
+            highlight: (code, lang) => {
                 if (lang && hljs.getLanguage(lang)) {
-                    try { return hljs.highlight(code, { language: lang }).value; } catch (err) {}
+                    try { return hljs.highlight(code, { language: lang }).value; } catch (e) {}
                 }
                 return hljs.highlightAuto(code).value;
             },
@@ -262,48 +181,44 @@ sitemap: false
         };
 
         let debounceTimer;
+        const textareaEl = document.getElementById('markdown-input');
+        const previewEl = document.getElementById('preview-output');
+
         function triggerUpdate() {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(updatePreview, 150);
         }
 
         function updatePreview() {
-            const textareaEl = document.getElementById('markdown-input');
-            const previewDiv = document.getElementById('preview-output');
-            const markdownText = textareaEl.value;
+            const scrollPercentage = textareaEl.scrollHeight > textareaEl.clientHeight ? textareaEl.scrollTop / (textareaEl.scrollHeight - textareaEl.clientHeight) : 0;
 
-            const sourceMax = textareaEl.scrollHeight - textareaEl.clientHeight;
-            const scrollPercentage = sourceMax > 0 ? textareaEl.scrollTop / sourceMax : 0;
+            previewEl.innerHTML = marked.parse(textareaEl.value);
 
-            previewDiv.innerHTML = marked.parse(markdownText);
-
-            previewDiv.querySelectorAll('img').forEach(img => {
+            previewEl.querySelectorAll('img').forEach(img => {
                 if (img.parentElement.tagName.toLowerCase() === 'figure') return;
-
+                
                 const figure = document.createElement('figure');
                 figure.className = 'img-block';
-
+                
                 const parentP = img.closest('p');
+                const container = (parentP && parentP.textContent.trim() === '') ? parentP : img;
+                
+                container.parentNode.insertBefore(figure, container);
+                figure.appendChild(img);
+                
                 if (parentP && parentP.textContent.trim() === '') {
-                    parentP.parentNode.insertBefore(figure, parentP);
                     parentP.remove();
-                } else {
-                    img.parentNode.insertBefore(figure, img);
                 }
 
-                figure.appendChild(img);
-
-                const altText = img.getAttribute('alt');
-                if (altText) {
+                if (img.alt) {
                     const figcaption = document.createElement('figcaption');
-                    figcaption.textContent = altText;
+                    figcaption.textContent = img.alt;
                     figure.appendChild(figcaption);
                 }
             });
 
-            previewDiv.querySelectorAll('pre').forEach(pre => {
+            previewEl.querySelectorAll('pre').forEach(pre => {
                 if (pre.parentElement.classList.contains('code-container')) return;
-
                 const code = pre.querySelector('code');
                 if (!code) return;
 
@@ -314,51 +229,24 @@ sitemap: false
 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'code-container';
-
-                const header = document.createElement('div');
-                header.className = 'code-header';
-                header.innerHTML = `
-                    <span class="code-lang">${lang}</span>
-                    <div class="code-actions">
-                        <button class="btn-copy" title="Копировать">${ICONS.copy}</button>
-                        <button class="btn-download" title="Скачать">${ICONS.download}</button>
+                wrapper.innerHTML = `
+                    <div class="code-header">
+                        <span class="code-lang">${lang}</span>
+                        <div class="code-actions">
+                            <button class="btn-copy" title="Копировать">${ICONS.copy}</button>
+                            <button class="btn-download" title="Скачать">${ICONS.download}</button>
+                        </div>
                     </div>
                 `;
-
                 pre.parentNode.insertBefore(wrapper, pre);
-                wrapper.appendChild(header);
                 wrapper.appendChild(pre);
-
-                const btnCopy = header.querySelector('.btn-copy');
-                const btnDownload = header.querySelector('.btn-download');
-
-                btnCopy.addEventListener('click', () => {
-                    navigator.clipboard.writeText(code.textContent).then(() => {
-                        btnCopy.innerHTML = ICONS.check;
-                        setTimeout(() => btnCopy.innerHTML = ICONS.copy, 2000);
-                    }).catch(err => console.error('Copy failed:', err));
-                });
-
-                btnDownload.addEventListener('click', () => {
-                    const blob = new Blob([code.textContent], { type: 'text/plain;charset=utf-8' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `snippet.${lang === 'text' ? 'txt' : lang}`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                });
             });
 
-            const targetMax = previewDiv.scrollHeight - previewDiv.clientHeight;
+            const targetMax = previewEl.scrollHeight - previewEl.clientHeight;
             if (targetMax > 0) {
-                isSyncingScroll = true;
-                previewDiv.scrollTop = scrollPercentage * targetMax;
-                requestAnimationFrame(() => {
-                    isSyncingScroll = false;
-                });
+                isSyncing = true;
+                previewEl.scrollTop = scrollPercentage * targetMax;
+                requestAnimationFrame(() => isSyncing = false);
             }
         }
 
@@ -366,61 +254,76 @@ sitemap: false
             const title = document.getElementById('meta-title').value || 'new-post';
             const desc = document.getElementById('meta-desc').value || '';
             const dateVal = document.getElementById('meta-date').value;
-            const content = document.getElementById('markdown-input').value;
+            const content = textareaEl.value;
 
-            if (!dateVal) { alert("Пожалуйста, укажите дату."); return; }
+            if (!dateVal) return alert("Пожалуйста, укажите дату.");
 
             const safeTitle = title.replace(/"/g, '\\"');
             const safeDesc = desc.replace(/"/g, '\\"');
             const permalink = `/${dateVal.replace(/-/g, '/')}/`;
 
-            let frontMatter = `---\nlayout: post\n`;
-            frontMatter += `title: "${safeTitle}"\n`;
-            if (safeDesc) frontMatter += `description: "${safeDesc}"\n`;
-            frontMatter += `date: ${dateVal} 12:00:00 +0000\n`;
-            frontMatter += `permalink: ${permalink}\n`;
-            frontMatter += `---\n\n`;
-
-            const fullPost = frontMatter + content;
-            const fileName = `${dateVal}.md`;
-
-            const blob = new Blob([fullPost], { type: 'text/markdown;charset=utf-8' });
+            const frontMatter = `---\nlayout: post\ntitle: "${safeTitle}"\n${safeDesc ? `description: "${safeDesc}"\n` : ''}date: ${dateVal} 12:00:00 +0000\npermalink: ${permalink}\n---\n\n`;
+            
+            const blob = new Blob([frontMatter + content], { type: 'text/markdown;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = fileName;
+            a.download = `${dateVal}.md`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
 
-        let isSyncingScroll = false;
-        const textareaEl = document.getElementById('markdown-input');
-        const previewEl = document.getElementById('preview-output');
-
+        let isSyncing = false;
+        
         function syncScroll(e) {
-            if (isSyncingScroll) return;
-            isSyncingScroll = true;
+            if (isSyncing) return;
+            isSyncing = true;
 
-            const source = e.target;
-            const target = source === textareaEl ? previewEl : textareaEl;
+            const isSourceTextarea = e.target === textareaEl;
+            const source = isSourceTextarea ? textareaEl : previewEl;
+            const target = isSourceTextarea ? previewEl : textareaEl;
 
             const sourceMax = source.scrollHeight - source.clientHeight;
             const targetMax = target.scrollHeight - target.clientHeight;
 
             if (sourceMax > 0) {
-                const percentage = source.scrollTop / sourceMax;
-                target.scrollTop = percentage * targetMax;
+                target.scrollTop = (source.scrollTop / sourceMax) * targetMax;
             }
 
-            requestAnimationFrame(() => {
-                isSyncingScroll = false;
-            });
+            requestAnimationFrame(() => isSyncing = false);
         }
 
         textareaEl.addEventListener('scroll', syncScroll);
         previewEl.addEventListener('scroll', syncScroll);
+
+        previewEl.addEventListener('click', e => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            const wrapper = btn.closest('.code-container');
+            const code = wrapper.querySelector('code');
+
+            if (btn.classList.contains('btn-copy')) {
+                navigator.clipboard.writeText(code.textContent).then(() => {
+                    btn.innerHTML = ICONS.check;
+                    setTimeout(() => btn.innerHTML = ICONS.copy, 2000);
+                }).catch(console.error);
+            }
+
+            if (btn.classList.contains('btn-download')) {
+                const lang = wrapper.querySelector('.code-lang').textContent.toLowerCase();
+                const blob = new Blob([code.textContent], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `snippet.${lang === 'text' ? 'txt' : lang}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        });
 
         updatePreview();
     </script>

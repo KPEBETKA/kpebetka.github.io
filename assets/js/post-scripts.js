@@ -1,7 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
-    if (typeof hljs !== 'undefined') {
-        hljs.highlightAll();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof hljs !== 'undefined') hljs.highlightAll();
 
     const postContent = document.querySelector('.post-content');
     if (!postContent) return;
@@ -14,31 +12,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     postContent.querySelectorAll('img').forEach(img => {
         if (img.parentElement.tagName.toLowerCase() === 'figure') return;
-
+        
         const figure = document.createElement('figure');
         figure.className = 'img-block';
-
+        
         const parentP = img.closest('p');
+        const container = (parentP && parentP.textContent.trim() === '') ? parentP : img;
+        
+        container.parentNode.insertBefore(figure, container);
+        figure.appendChild(img); 
+        
         if (parentP && parentP.textContent.trim() === '') {
-            parentP.parentNode.insertBefore(figure, parentP);
             parentP.remove();
-        } else {
-            img.parentNode.insertBefore(figure, img);
         }
 
-        figure.appendChild(img);
-
-        const altText = img.getAttribute('alt');
-        if (altText) {
+        if (img.alt) {
             const figcaption = document.createElement('figcaption');
-            figcaption.textContent = altText;
+            figcaption.textContent = img.alt;
             figure.appendChild(figcaption);
         }
     });
 
     postContent.querySelectorAll('pre').forEach(pre => {
         if (pre.parentElement.classList.contains('code-container')) return;
-
         const code = pre.querySelector('code');
         if (!code) return;
 
@@ -49,32 +45,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const wrapper = document.createElement('div');
         wrapper.className = 'code-container';
-
-        const header = document.createElement('div');
-        header.className = 'code-header';
-        header.innerHTML = `
-            <span class="code-lang">${lang}</span>
-            <div class="code-actions">
-                <button class="btn-copy" title="Копировать">${ICONS.copy}</button>
-                <button class="btn-download" title="Скачать">${ICONS.download}</button>
+        wrapper.innerHTML = `
+            <div class="code-header">
+                <span class="code-lang">${lang}</span>
+                <div class="code-actions">
+                    <button class="btn-copy" title="Копировать">${ICONS.copy}</button>
+                    <button class="btn-download" title="Скачать">${ICONS.download}</button>
+                </div>
             </div>
         `;
 
         pre.parentNode.insertBefore(wrapper, pre);
-        wrapper.appendChild(header);
         wrapper.appendChild(pre);
+    });
 
-        const btnCopy = header.querySelector('.btn-copy');
-        const btnDownload = header.querySelector('.btn-download');
+    postContent.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const wrapper = btn.closest('.code-container');
+        const code = wrapper.querySelector('code');
 
-        btnCopy.addEventListener('click', () => {
+        if (btn.classList.contains('btn-copy')) {
             navigator.clipboard.writeText(code.textContent).then(() => {
-                btnCopy.innerHTML = ICONS.check;
-                setTimeout(() => btnCopy.innerHTML = ICONS.copy, 2000);
-            }).catch(err => console.error('Copy failed:', err));
-        });
+                btn.innerHTML = ICONS.check;
+                setTimeout(() => btn.innerHTML = ICONS.copy, 2000);
+            }).catch(console.error);
+        }
 
-        btnDownload.addEventListener('click', () => {
+        if (btn.classList.contains('btn-download')) {
+            const lang = wrapper.querySelector('.code-lang').textContent.toLowerCase();
             const blob = new Blob([code.textContent], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -84,6 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-        });
+        }
     });
 });
