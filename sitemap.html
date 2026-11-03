@@ -4,37 +4,32 @@ title: "Карта сайта"
 permalink: /sitemap.html
 ---
 <main class="content-col">
-  <a href="{{ '/' | relative_url }}" class="back-link">← cd ..</a>
+  <a href="{{ '/' | relative_url }}" class="back-link">$ cd ..</a>
   
   <article class="post">
     <header class="post-header">
-      <h1 class="article-title">Карта сайта</h1>
-      <div class="article-desc syn-string">Список всех страниц и записей блога</div>
+      <h1 class="article-title">"Карта сайта"</h1>
+      <div class="article-desc syn-string">Полный список файлов блога</div>
     </header>
 
     <div class="post-content">
-      <h2>Записи (Posts)</h2>
-      <ul>
-        {% for post in site.posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a> 
-            <span class="syn-comment">({{ post.date | date: "%d.%m.%Y" }})</span>
-          </li>
-        {% endfor %}
-      </ul>
-
-      <h2>Страницы (Pages)</h2>
-      <ul>
-        {% for page in site.pages %}
+      <span class="syn-comment"># Записи (Posts)</span><br>
+      <span class="syn-keyword">declare</span> <span class="syn-var">-a posts</span>=(<br>
+      {% for post in site.posts %}
+        <span class="indent"><a href="{{ post.url | relative_url }}" class="post-title-link">"{{ post.title | escape }}"</a> <span class="syn-comment"># {{ post.date | date: "%d.%m.%Y" }}</span></span>
+      {% endfor %}
+      )<br>
+      <br>
+      <span class="syn-comment"># Страницы (Pages)</span><br>
+      <span class="syn-keyword">declare</span> <span class="syn-var">-a pages</span>=(<br>
+      {% for page in site.pages %}
+        {% if page.sitemap != false and page.url != '/editor.html' %}
           {% unless page.url contains 'feed.xml' or page.url contains 'sitemap' or page.url contains '.txt' or page.url contains '.xml' or page.url contains '/assets/' %}
-            <li>
-              <a href="{{ page.url | relative_url }}">
-                {{ page.title | default: page.name }}
-              </a>
-            </li>
+            <span class="indent"><a href="{{ page.url | relative_url }}" class="post-title-link">"{{ page.title | default: page.name }}"</a></span>
           {% endunless %}
-        {% endfor %}
-      </ul>
+        {% endif %}
+      {% endfor %}
+      )<br>
     </div>
   </article>
 </main>

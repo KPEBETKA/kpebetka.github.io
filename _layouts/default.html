@@ -3,27 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
-  {% seo %}
+  {% seo title=false %}
   {% feed_meta %}
 </head>
 <body>
   <div class="layout">
     <aside class="left-col">
-      <div class="avatar-container">
-        <img src="https://avatars.githubusercontent.com/u/6225426" alt="kpebetka avatar">
-      </div>
-      <div class="logo-text">
-        <span class="syn-keyword">export</span> <span class="syn-var">USER</span> = <span class="syn-string">"kpebetka"</span><br>
-        <span class="subtitle syn-comment"># Blog</span>
+      <div class="neofetch-container">
+        <div class="avatar-container">
+          <div class="avatar-header"><span class="syn-keyword">imgcat</span> <span class="syn-var">avatar.png</span></div>
+          <img src="https://github.com/kpebetka.png" alt="kpebetka avatar">
+        </div>
+        <div class="neofetch-info">
+          <span class="host">kpebetka</span><span class="syn-comment">@</span><span class="syn-string">blog</span><br>
+          <span class="divider">------------------</span>
+          <div class="term-content">
+            <div class="key">Branch</div><div class="val">: main</div>
+            <div class="key">Commits</div><div class="val">: {{ site.posts.size }}</div>
+          </div>
+        </div>
       </div>
       <div class="links-block">
         <span class="syn-comment"># Links</span><br>
         <span class="syn-keyword">export</span> <span class="syn-var">GITHUB</span> = <a href="https://github.com/kpebetka" target="_blank" rel="noopener noreferrer" class="post-title-link">"https://github.com/kpebetka"</a><br>
         <br>
-        <span class="syn-keyword">declare</span> <span class="syn-var">-a projects</span> = (<br>
-        <span class="indent"><a href="https://burnafterreading.kpebetka.net/" target="_blank" rel="noopener noreferrer" class="post-title-link">"One-time secret messages"</a></span>)<br>
+        <span class="syn-keyword">tree</span> <span class="syn-var">~/projects</span><br>
+        <span class="syn-comment">├──</span> <a href="https://burnafterreading.kpebetka.net/" target="_blank" rel="noopener noreferrer" class="post-title-link" style="color: #ce9178;">One-time secret messages</a><br>
+        <span class="syn-comment">└──</span> <a href="https://kpebetka.github.io/passphrase-generator/trigrams/" target="_blank" rel="noopener noreferrer" class="post-title-link" style="color: #ce9178;">Secure passphrase generator</a><br>
         <br>
         <span class="syn-keyword">export</span> <span class="syn-var">RSS</span> = <a href="{{ '/feed.xml' | relative_url }}" target="_blank" rel="noopener noreferrer" class="post-title-link">"/feed.xml"</a><br>
       </div>
