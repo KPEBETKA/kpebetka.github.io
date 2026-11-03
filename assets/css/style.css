@@ -391,31 +391,55 @@ a:hover {
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
+/* --- ИСПРАВЛЕННЫЙ МОБИЛЬНЫЙ АДАПТИВ --- */
 @media (max-width: 800px) {
-    .layout,
-    .top-row,
-    .neofetch-container,
-    .links-block,
-    .center-col,
-    .content-col {
+    body {
+        padding: 20px 15px 40px;
+    }
+    
+    .layout {
         width: 100%;
+        gap: 20px;
     }
     
     .top-row {
         flex-direction: column;
-        gap: 15px;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .neofetch-container {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        gap: 10px;
     }
     
     .neofetch-container .avatar-container {
-        margin-bottom: 0;
+        width: 120px;
+        margin-bottom: 5px;
+    }
+    
+    .neofetch-container .avatar-header {
+        font-size: 10px;
+    }
+    
+    .neofetch-info {
+        width: 100%;
+        word-break: break-word;
     }
     
     .links-block {
+        width: 100%;
         height: auto;
         padding: 15px;
         white-space: normal;
         overflow-wrap: break-word;
         overflow-x: hidden;
+    }
+    
+    .center-col, .content-col {
+        width: 100%;
     }
     
     .post-block {
