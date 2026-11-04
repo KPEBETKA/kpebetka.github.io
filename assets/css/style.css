@@ -173,6 +173,7 @@ a:hover {
     white-space: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
+    margin-bottom: 0;
 }
 
 .links-block::-webkit-scrollbar {
@@ -425,10 +426,6 @@ a:hover {
         grid-template-columns: max-content minmax(0, 1fr);
     }
 
-    .links-block {
-        height: 100%;
-    }
-
     .neofetch-container .avatar-container {
         height: 100%;
         width: auto;
@@ -481,6 +478,7 @@ a:hover {
         white-space: normal;
         overflow-wrap: break-word;
         overflow-x: hidden;
+        margin-bottom: 0;
     }
     
     .center-col, .content-col {
