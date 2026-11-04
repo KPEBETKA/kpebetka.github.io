@@ -422,19 +422,29 @@ a:hover {
     }
 
     .neofetch-container .avatar-container {
-        align-self: stretch;
+        position: relative;
+        height: 100%;
+        aspect-ratio: 1;
+        width: auto;
         display: flex;
         flex-direction: column;
-        width: max-content;
+    }
+
+    .neofetch-container .avatar-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        background: rgba(21, 27, 21, 0.95);
     }
 
     .neofetch-container .avatar-container img {
         flex: 1;
-        min-height: 0;
-        aspect-ratio: 1;
-        width: auto;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        contain: size; 
+        min-height: 0;
     }
 }
 
