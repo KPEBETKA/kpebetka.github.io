@@ -531,15 +531,14 @@ a:hover {
     }
 }
 
-@media (min-width: 650px) and (max-width: 800px) {
+@media (min-width: 660px) and (max-width: 800px) {
     .page-index .layout {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr max-content;
         grid-template-areas:
             "neofetch tree"
-            "posts tree";
+            "posts posts";
         gap: 20px;
-        align-items: start;
     }
 
     .page-index .top-row {
@@ -554,7 +553,7 @@ a:hover {
     .page-index .links-block {
         grid-area: tree;
         width: max-content;
-        height: auto;
+        height: 100%;
         padding: 15px 20px 15px 15px;
         white-space: nowrap;
         overflow-x: auto;
