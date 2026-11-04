@@ -530,3 +530,39 @@ a:hover {
         display: none;
     }
 }
+
+@media (min-width: 650px) and (max-width: 800px) {
+    .page-index .layout {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "neofetch tree"
+            "posts tree";
+        gap: 20px;
+        align-items: start;
+    }
+
+    .page-index .top-row {
+        display: contents;
+    }
+
+    .page-index .neofetch-container {
+        grid-area: neofetch;
+        width: 100%;
+    }
+
+    .page-index .links-block {
+        grid-area: tree;
+        width: max-content;
+        height: auto;
+        padding: 15px 20px 15px 15px;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+
+    .page-index .center-col {
+        grid-area: posts;
+        width: 100%;
+        min-width: 0;
+    }
+}
