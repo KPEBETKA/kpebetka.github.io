@@ -136,7 +136,7 @@ a:hover {
 }
 
 .export-content {
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 .links-block, 
@@ -431,6 +431,10 @@ a:hover {
     .neofetch-info {
         word-break: break-word;
     }
+
+    .neofetch-info .user-line {
+        font-size: 20px;
+    }
     
     .links-block {
         width: 100%;
@@ -469,16 +473,15 @@ a:hover {
             "export export";
     }
 
-    .page-index .neofetch-info .user-line {
-        font-size: 18px;
-    }
-
     .page-index .neofetch-container .export-block {
         margin-top: 10px;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 
     .page-index .neofetch-container .export-content {
         margin-bottom: 0;
+        padding-bottom: 0;
     }
 
     .page-post .links-block,
