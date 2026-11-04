@@ -469,6 +469,18 @@ a:hover {
             "export export";
     }
 
+    .page-index .neofetch-info .user-line {
+        font-size: 18px;
+    }
+
+    .page-index .neofetch-container .export-block {
+        margin-top: 10px;
+    }
+
+    .page-index .neofetch-container .export-content {
+        margin-bottom: 0;
+    }
+
     .page-post .links-block,
     .page-post .export-block {
         display: none;
