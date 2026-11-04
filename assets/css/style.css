@@ -531,7 +531,8 @@ a:hover {
 }
 
 @media (min-width: 660px) and (max-width: 800px) {
-    .page-index .layout {
+    .page-index .layout,
+    .page-post .layout {
         display: grid;
         grid-template-columns: 1fr max-content;
         grid-template-areas:
@@ -540,16 +541,19 @@ a:hover {
         gap: 20px;
     }
 
-    .page-index .top-row {
+    .page-index .top-row,
+    .page-post .top-row {
         display: contents;
     }
 
-    .page-index .neofetch-container {
+    .page-index .neofetch-container,
+    .page-post .neofetch-container {
         grid-area: neofetch;
         width: 100%;
     }
 
-    .page-index .links-block {
+    .page-index .links-block,
+    .page-post .links-block {
         grid-area: tree;
         width: max-content;
         height: 100%;
@@ -558,7 +562,8 @@ a:hover {
         overflow-x: auto;
     }
 
-    .page-index .center-col {
+    .page-index .center-col,
+    .page-post .content-col {
         grid-area: posts;
         width: 100%;
         min-width: 0;
