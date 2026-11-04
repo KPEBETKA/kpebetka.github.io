@@ -462,8 +462,7 @@ a:hover {
 
     /* Специфичные правки для страницы просмотра статьи */
     .page-post .links-block,
-    .page-post .export-content,
-    .page-post .divider-export {
+    .page-post .export-content {
         display: none;
     }
     
