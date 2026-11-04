@@ -106,6 +106,11 @@ a:hover {
     font-weight: bold;
 }
 
+.neofetch-info .user-line {
+    font-size: 24px;
+    line-height: 1.3;
+}
+
 .neofetch-container .export-block {
     grid-area: export;
     font-size: 13px;
@@ -430,10 +435,6 @@ a:hover {
     
     .neofetch-info {
         word-break: break-word;
-    }
-
-    .neofetch-info .user-line {
-        font-size: 24px;
     }
     
     .links-block {
