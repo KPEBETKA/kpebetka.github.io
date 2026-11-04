@@ -15,7 +15,7 @@
 }
 
 html {
-    scrollbar-gutter: stable;
+    overflow-y: scroll;
 }
 
 * {
@@ -32,6 +32,9 @@ body {
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     padding: 40px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 a {
@@ -51,7 +54,6 @@ a:hover {
     gap: 25px;
     width: max-content;
     max-width: 100%;
-    margin: 0 auto;
 }
 
 .top-row {
@@ -151,11 +153,15 @@ a:hover {
 }
 
 .links-block, 
-.post-block {
+.post-block,
+.post {
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--card-shadow);
+    padding: 20px;
+    margin-bottom: 30px;
+    overflow-wrap: break-word;
 }
 
 .links-block {
@@ -171,16 +177,6 @@ a:hover {
 
 .links-block::-webkit-scrollbar {
     display: none;
-}
-
-.post-block {
-    padding: 20px;
-    margin-bottom: 30px;
-    overflow-wrap: break-word;
-}
-
-.post {
-    padding: 20px;
 }
 
 .syn-comment { color: var(--muted); }
@@ -451,10 +447,12 @@ a:hover {
 @media (max-width: 800px) {
     body {
         padding: 20px 15px 40px;
+        display: block;
     }
     
     .layout {
         width: 100%;
+        margin: 0 auto;
     }
     
     .top-row {
@@ -490,11 +488,7 @@ a:hover {
         min-width: 0;
     }
     
-    .post-block {
-        padding: 15px;
-    }
-
-    .post {
+    .post-block, .post {
         padding: 15px;
     }
 
