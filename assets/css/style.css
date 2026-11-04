@@ -539,6 +539,7 @@ a:hover {
             "neofetch tree"
             "posts posts";
         gap: 20px;
+        align-items: stretch;
     }
 
     .page-index .top-row,
@@ -550,13 +551,15 @@ a:hover {
     .page-post .neofetch-container {
         grid-area: neofetch;
         width: 100%;
+        align-self: stretch;
     }
 
     .page-index .links-block,
     .page-post .links-block {
         grid-area: tree;
         width: max-content;
-        height: 100%;
+        height: auto;
+        align-self: stretch;
         padding: 15px 20px 15px 15px;
         white-space: nowrap;
         overflow-x: auto;
