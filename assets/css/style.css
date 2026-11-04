@@ -187,13 +187,15 @@ a:hover {
 
 .center-col {
     font-size: 13px;
-    width: 0;
+    width: 100%;
+    max-width: 0;
     min-width: 100%;
 }
 
 .content-col {
     font-size: 14px;
-    width: 0;
+    width: 100%;
+    max-width: 0;
     min-width: 100%;
 }
 
@@ -478,6 +480,7 @@ a:hover {
     
     .center-col, .content-col {
         width: 100%;
+        max-width: 100%;
         min-width: 0;
     }
     
