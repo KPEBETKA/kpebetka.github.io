@@ -581,18 +581,27 @@ a:hover {
     .neofetch-info,
     .term-content,
     .term-content .val,
-    .export-block {
+    .export-block,
+    .export-content {
         min-width: 0;
     }
 
     .neofetch-container .user-line,
     .neofetch-container .term-content .val,
-    .neofetch-container .export-content .post-title-link,
     .neofetch-container .avatar-header {
         display: block;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
+    }
+
+    .export-content .post-title-link {
+        display: inline-block;
+        vertical-align: bottom;
+        max-width: calc(100% - 100px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
