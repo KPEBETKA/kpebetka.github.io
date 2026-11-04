@@ -424,12 +424,9 @@ a:hover {
 
     .neofetch-container .avatar-container {
         height: 100%;
-        width: auto;
-        aspect-ratio: 1 / 1;
+        width: fit-content;
         display: flex;
         flex-direction: column;
-        align-self: stretch;
-        contain: size;
     }
 
     .neofetch-container .avatar-header {
@@ -438,9 +435,10 @@ a:hover {
 
     .neofetch-container .avatar-container img {
         flex: 1;
-        width: 100%;
-        height: 100%;
-        min-height: 0;
+        height: 0;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        max-width: none;
         object-fit: cover;
     }
 }
