@@ -422,16 +422,15 @@ a:hover {
     }
 
     .neofetch-container .avatar-container {
-        width: auto;
         height: 100%;
-        display: flex;
-        flex-direction: column;
+        width: max-content;
+        display: grid;
+        grid-template-rows: auto 1fr;
     }
 
     .neofetch-container .avatar-container img {
-        flex: 1;
+        height: 100%;
         width: auto;
-        min-height: 0;
         aspect-ratio: 1;
         object-fit: cover;
     }
