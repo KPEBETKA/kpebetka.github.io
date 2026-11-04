@@ -417,6 +417,7 @@ a:hover {
 
     .neofetch-container {
         align-items: stretch;
+        grid-template-columns: max-content minmax(0, 1fr);
     }
 
     .links-block {
@@ -425,17 +426,16 @@ a:hover {
 
     .neofetch-container .avatar-container {
         height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .neofetch-container .avatar-header {
-        flex-shrink: 0;
+        width: auto;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        justify-items: start;
     }
 
     .neofetch-container .avatar-image {
-        flex: 1;
+        height: 100%;
         aspect-ratio: 1 / 1;
+        width: auto;
     }
 }
 
