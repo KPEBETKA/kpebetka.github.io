@@ -426,7 +426,7 @@ a:hover {
     }
 
     .links-block {
-        height: auto;
+        height: 100%;
     }
 
     .neofetch-container .avatar-container {
