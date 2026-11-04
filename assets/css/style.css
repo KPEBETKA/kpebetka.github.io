@@ -187,8 +187,8 @@ a:hover {
 
 .center-col {
     font-size: 13px;
-    min-width: 0;
-    width: 100%;
+    width: 0;
+    min-width: 100%;
 }
 
 .content-col {
@@ -299,7 +299,7 @@ a:hover {
     border-radius: 4px;
     font-size: 0.9em;
     border: 1px solid var(--border);
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
 .post-content mark {
@@ -478,6 +478,7 @@ a:hover {
     
     .center-col, .content-col {
         width: 100%;
+        min-width: 0;
     }
     
     .post-block {
