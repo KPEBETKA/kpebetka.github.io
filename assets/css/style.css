@@ -53,7 +53,7 @@ a:hover {
 .top-row {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 .neofetch-container {
@@ -70,7 +70,7 @@ a:hover {
 
 .neofetch-container .avatar-container {
     grid-area: avatar;
-    width: 135px;
+    width: 140px;
     border: 1px solid var(--border-strong);
     border-radius: var(--radius);
     overflow: hidden;
@@ -155,7 +155,6 @@ a:hover {
 .links-block {
     flex-shrink: 0;
     width: max-content;
-    height: 166px;
     padding: 15px 20px 15px 15px;
     font-size: 13px;
     line-height: 1.5;
@@ -423,10 +422,11 @@ a:hover {
         flex-direction: column;
         gap: 20px;
         width: 100%;
+        align-items: flex-start;
     }
     
     .neofetch-container .avatar-container {
-        width: 120px;
+        width: 115px;
     }
     
     .neofetch-container .avatar-header {
