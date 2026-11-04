@@ -429,13 +429,13 @@ a:hover {
         width: auto;
         display: grid;
         grid-template-rows: auto 1fr;
-        justify-items: start;
     }
 
     .neofetch-container .avatar-image {
         height: 100%;
         aspect-ratio: 1 / 1;
         width: auto;
+        justify-self: start;
     }
 }
 
