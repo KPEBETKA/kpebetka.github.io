@@ -14,6 +14,10 @@
     --card-shadow: 0 0 20px rgba(77, 184, 106, 0.02), 0 8px 30px rgba(0, 0, 0, 0.55);
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -175,6 +179,10 @@ a:hover {
     overflow-wrap: break-word;
 }
 
+.post {
+    padding: 20px;
+}
+
 .syn-comment { color: var(--muted); }
 .syn-keyword { color: var(--accent); font-weight: 700; }
 .syn-var { color: #9cdcfe; }
@@ -187,15 +195,13 @@ a:hover {
 
 .center-col {
     font-size: 13px;
-    width: 100%;
-    max-width: 0;
+    width: 0;
     min-width: 100%;
 }
 
 .content-col {
     font-size: 14px;
-    width: 100%;
-    max-width: 0;
+    width: 0;
     min-width: 100%;
 }
 
@@ -205,6 +211,7 @@ a:hover {
     font-size: 13px;
     color: var(--muted);
     transition: color 0.2s;
+    margin-left: 20px;
 }
 
 .back-link:hover {
@@ -480,12 +487,19 @@ a:hover {
     
     .center-col, .content-col {
         width: 100%;
-        max-width: 100%;
         min-width: 0;
     }
     
     .post-block {
         padding: 15px;
+    }
+
+    .post {
+        padding: 15px;
+    }
+
+    .back-link {
+        margin-left: 15px;
     }
     
     .article-title { font-size: 20px; }
