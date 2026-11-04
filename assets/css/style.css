@@ -57,18 +57,23 @@ a:hover {
 }
 
 .neofetch-container {
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+        "avatar info"
+        "avatar export";
+    column-gap: 15px;
+    row-gap: 0;
+    align-items: start;
     flex-shrink: 0;
 }
 
 .neofetch-container .avatar-container {
+    grid-area: avatar;
     width: 135px;
     border: 1px solid var(--border-strong);
     border-radius: var(--radius);
     overflow: hidden;
-    flex-shrink: 0;
     background: var(--surface);
 }
 
@@ -89,6 +94,8 @@ a:hover {
 }
 
 .neofetch-info {
+    grid-area: info;
+    min-width: 0;
     font-size: 13px;
     line-height: 1.5;
     padding-top: 2px;
@@ -97,6 +104,10 @@ a:hover {
 .neofetch-info .host {
     color: var(--accent);
     font-weight: bold;
+}
+
+.neofetch-container .export-block {
+    grid-area: export;
 }
 
 .divider {
@@ -391,7 +402,6 @@ a:hover {
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-/* --- МОБИЛЬНЫЙ АДАПТИВ --- */
 @media (max-width: 800px) {
     body {
         padding: 20px 15px 40px;
@@ -408,16 +418,8 @@ a:hover {
         width: 100%;
     }
     
-    .neofetch-container {
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
     .neofetch-container .avatar-container {
         width: 120px;
-        margin-bottom: 5px;
     }
     
     .neofetch-container .avatar-header {
@@ -425,7 +427,6 @@ a:hover {
     }
     
     .neofetch-info {
-        width: 100%;
         word-break: break-word;
     }
     
@@ -460,15 +461,14 @@ a:hover {
     .code-header { padding: 6px 10px; font-size: 11px; }
     .post-content pre { padding: 10px; }
 
-    /* Специфичные правки для страницы просмотра статьи */
-    .page-post .links-block,
-    .page-post .export-content {
-        display: none;
+    .page-index .neofetch-container {
+        grid-template-areas:
+            "avatar info"
+            "export export";
     }
-    
-    .page-post .neofetch-container {
-        flex-direction: row;
-        gap: 15px;
-        margin-bottom: 0;
+
+    .page-post .links-block,
+    .page-post .export-block {
+        display: none;
     }
 }
