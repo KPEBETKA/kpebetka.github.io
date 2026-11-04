@@ -565,3 +565,14 @@ a:hover {
         min-width: 0;
     }
 }
+
+@media (max-width: 659px) {
+    .neofetch-info {
+        padding-right: 0;
+    }
+
+    .neofetch-info .divider {
+        width: 100%;
+        margin-left: 0;
+    }
+}
