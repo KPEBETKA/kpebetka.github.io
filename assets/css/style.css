@@ -86,11 +86,13 @@ a:hover {
     white-space: nowrap;
 }
 
-.neofetch-container .avatar-container img {
+.neofetch-container .avatar-image {
     display: block;
     width: 100%;
     aspect-ratio: 1;
-    object-fit: cover;
+    background-image: url('https://github.com/kpebetka.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .neofetch-info {
@@ -415,6 +417,7 @@ a:hover {
 
     .neofetch-container {
         align-items: stretch;
+        grid-template-rows: min-content min-content;
     }
 
     .links-block {
@@ -423,8 +426,7 @@ a:hover {
 
     .neofetch-container .avatar-container {
         height: 100%;
-        width: auto;
-        aspect-ratio: 1 / 1;
+        width: max-content;
         display: flex;
         flex-direction: column;
     }
@@ -433,12 +435,13 @@ a:hover {
         flex-shrink: 0;
     }
 
-    .neofetch-container .avatar-container img {
+    .neofetch-container .avatar-image {
         flex: 1;
-        width: 100%;
-        height: 100%;
-        min-height: 0;
-        object-fit: cover;
+        height: 0;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        background-size: cover;
+        background-position: center;
     }
 }
 
