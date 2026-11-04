@@ -571,3 +571,28 @@ a:hover {
         width: 100%;
     }
 }
+
+@media (max-width: 380px) {
+    .neofetch-container {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .neofetch-info,
+    .term-content,
+    .term-content .val,
+    .export-block {
+        min-width: 0;
+    }
+
+    .neofetch-container .user-line,
+    .neofetch-container .term-content .val,
+    .neofetch-container .export-content .post-title-link,
+    .neofetch-container .avatar-header {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+}
