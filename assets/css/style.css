@@ -108,6 +108,8 @@ a:hover {
 
 .neofetch-container .export-block {
     grid-area: export;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .divider {
