@@ -213,7 +213,7 @@ a:hover {
     font-size: 13px;
     color: var(--muted);
     transition: color 0.2s;
-    margin-left: 20px;
+    margin-left: 0;
 }
 
 .back-link:hover {
@@ -511,7 +511,7 @@ a:hover {
     }
 
     .back-link {
-        margin-left: 15px;
+        margin-left: 0;
     }
     
     .article-title { font-size: 20px; }
