@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     if (typeof hljs !== 'undefined') {
-        if (!hljs.getLanguage('conf')) {
-            const ini = hljs.getLanguage('ini');
-            if (ini) hljs.registerLanguage('conf', ini);
+        if (!hljs.getLanguage('conf') && hljs.getLanguage('ini')) {
+            hljs.registerAliases(['conf'], { languageName: 'ini' });
         }
         hljs.highlightAll();
     }
