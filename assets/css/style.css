@@ -530,7 +530,7 @@ a:hover {
     }
 }
 
-@media (min-width: 660px) and (max-width: 800px) {
+@media (min-width: 670px) and (max-width: 800px) {
     .page-index .layout,
     .page-post .layout {
         display: grid;
@@ -589,7 +589,7 @@ a:hover {
     }
 }
 
-@media (max-width: 659px) {
+@media (max-width: 670px) {
     .neofetch-container {
         width: 100%;
     }
