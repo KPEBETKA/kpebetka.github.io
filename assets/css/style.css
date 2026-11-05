@@ -12,6 +12,7 @@
     --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
     --page-glow: rgba(77, 184, 106, 0.04);
     --card-shadow: 0 0 20px rgba(77, 184, 106, 0.02), 0 8px 30px rgba(0, 0, 0, 0.55);
+    --avatar-url: url('https://github.com/kpebetka.png');
 }
 
 html {
@@ -22,6 +23,17 @@ html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
 }
 
 body {
@@ -41,6 +53,7 @@ a {
     color: var(--accent);
     text-decoration: none;
     cursor: pointer;
+    transition: color 0.15s ease;
 }
 
 a:hover {
@@ -101,7 +114,7 @@ a:hover {
     aspect-ratio: 1 / 1;
     width: auto;
     justify-self: start;
-    background-image: url('https://github.com/kpebetka.png');
+    background-image: var(--avatar-url);
     background-size: cover;
     background-position: center;
 }
@@ -212,7 +225,7 @@ a:hover {
     margin-bottom: 25px;
     font-size: 13px;
     color: var(--muted);
-    transition: color 0.2s;
+    transition: color 0.15s ease;
     margin-left: 0;
 }
 
@@ -484,6 +497,10 @@ a:hover {
     
     .neofetch-info {
         word-break: break-word;
+    }
+
+    .neofetch-container .avatar-image {
+        max-width: 120px;
     }
     
     .page-index .neofetch-container {
