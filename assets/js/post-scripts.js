@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    if (typeof hljs !== 'undefined') hljs.highlightAll();
+    if (typeof hljs !== 'undefined') {
+        if (!hljs.getLanguage('conf')) {
+            const ini = hljs.getLanguage('ini');
+            if (ini) hljs.registerLanguage('conf', ini);
+        }
+        hljs.highlightAll();
+    }
 
     const postContent = document.querySelector('.post-content');
     if (!postContent) return;
