@@ -433,10 +433,15 @@ a:hover {
 }
 
 @media (max-width: 1024px) {
+    .page-index .layout {
+        width: 100%;
+    }
+
     .page-index .neofetch-container {
         grid-template-areas:
             "avatar info"
             "export export";
+        width: 100%;
     }
 
     .page-index .neofetch-container .export-block {
