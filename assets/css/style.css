@@ -421,7 +421,7 @@ a:hover {
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-@media (min-width: 801px) {
+@media (min-width: 1025px) {
     .top-row {
         align-items: stretch;
     }
@@ -429,6 +429,26 @@ a:hover {
     .neofetch-container {
         align-items: stretch;
         grid-template-columns: max-content minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .page-index .neofetch-container {
+        grid-template-areas:
+            "avatar info"
+            "export export";
+    }
+
+    .page-index .neofetch-container .export-block {
+        grid-column: 1 / -1;
+        margin-top: 15px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .page-index .neofetch-container .export-content {
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 }
 
@@ -460,24 +480,6 @@ a:hover {
 
     .neofetch-info > .divider:last-child {
         margin-bottom: 0;
-    }
-    
-    .page-index .neofetch-container {
-        grid-template-areas:
-            "avatar info"
-            "export export";
-    }
-
-    .page-index .neofetch-container .export-block {
-        grid-column: 1 / -1;
-        margin-top: 15px;
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
-
-    .page-index .neofetch-container .export-content {
-        margin-bottom: 0;
-        padding-bottom: 0;
     }
     
     .links-block {
