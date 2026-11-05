@@ -434,7 +434,7 @@ a:hover {
 
 @media (max-width: 1024px) {
     .neofetch-container .avatar-header {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .neofetch-info > .divider:last-child {
