@@ -433,6 +433,21 @@ a:hover {
 }
 
 @media (max-width: 1024px) {
+    .neofetch-info > .divider:last-child {
+        margin-bottom: 0;
+    }
+
+    .neofetch-container .export-block {
+        margin-top: 15px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .neofetch-container .export-content {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
     .page-index .layout {
         width: 100%;
     }
@@ -446,14 +461,6 @@ a:hover {
 
     .page-index .neofetch-container .export-block {
         grid-column: 1 / -1;
-        margin-top: 15px;
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
-
-    .page-index .neofetch-container .export-content {
-        margin-bottom: 0;
-        padding-bottom: 0;
     }
 }
 
@@ -481,10 +488,6 @@ a:hover {
     
     .neofetch-info {
         word-break: break-word;
-    }
-
-    .neofetch-info > .divider:last-child {
-        margin-bottom: 0;
     }
     
     .page-index .neofetch-container {
