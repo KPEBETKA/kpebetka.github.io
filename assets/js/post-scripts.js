@@ -10,6 +10,49 @@ document.addEventListener("DOMContentLoaded", () => {
         download: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`
     };
 
+    function renderMarks(root) {
+        const SKIP = new Set(['CODE', 'PRE', 'SCRIPT', 'STYLE', 'KBD', 'SAMP', 'TEXTAREA']);
+
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+                if (!/==[^=]+==/.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+                let parent = node.parentElement;
+                while (parent && parent !== root) {
+                    if (SKIP.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+                    parent = parent.parentElement;
+                }
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+
+        const textNodes = [];
+        let n;
+        while ((n = walker.nextNode())) textNodes.push(n);
+
+        for (const textNode of textNodes) {
+            const value = textNode.nodeValue;
+            const regex = /==([^=]+)==/g;
+            const fragment = document.createDocumentFragment();
+            let lastIndex = 0;
+            let match;
+            while ((match = regex.exec(value)) !== null) {
+                if (match.index > lastIndex) {
+                    fragment.appendChild(document.createTextNode(value.slice(lastIndex, match.index)));
+                }
+                const mark = document.createElement('mark');
+                mark.textContent = match[1].trim();
+                fragment.appendChild(mark);
+                lastIndex = match.index + match[0].length;
+            }
+            if (lastIndex < value.length) {
+                fragment.appendChild(document.createTextNode(value.slice(lastIndex)));
+            }
+            textNode.parentNode.replaceChild(fragment, textNode);
+        }
+    }
+
+    renderMarks(postContent);
+
     postContent.querySelectorAll('img').forEach(img => {
         if (img.parentElement.tagName.toLowerCase() === 'figure') return;
         
