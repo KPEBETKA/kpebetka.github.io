@@ -564,7 +564,7 @@ a:hover {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 390px) {
     .neofetch-container {
         min-width: 0;
         width: 100%;
