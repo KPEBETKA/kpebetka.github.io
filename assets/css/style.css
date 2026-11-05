@@ -457,6 +457,10 @@ a:hover {
     .neofetch-info {
         word-break: break-word;
     }
+
+    .neofetch-info > .divider:last-child {
+        margin-bottom: 0;
+    }
     
     .page-index .neofetch-container {
         grid-template-areas:
