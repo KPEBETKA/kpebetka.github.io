@@ -76,7 +76,10 @@ a:hover {
 
 .neofetch-container .avatar-container {
     grid-area: avatar;
-    width: 145px;
+    height: 100%;
+    width: auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
     border: 1px solid var(--border-strong);
     border-radius: var(--radius);
     overflow: hidden;
@@ -94,8 +97,10 @@ a:hover {
 
 .neofetch-container .avatar-image {
     display: block;
-    width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    width: auto;
+    justify-self: start;
     background-image: url('https://github.com/kpebetka.png');
     background-size: cover;
     background-position: center;
@@ -425,20 +430,6 @@ a:hover {
         align-items: stretch;
         grid-template-columns: max-content minmax(0, 1fr);
     }
-
-    .neofetch-container .avatar-container {
-        height: 100%;
-        width: auto;
-        display: grid;
-        grid-template-rows: auto 1fr;
-    }
-
-    .neofetch-container .avatar-image {
-        height: 100%;
-        aspect-ratio: 1 / 1;
-        width: auto;
-        justify-self: start;
-    }
 }
 
 @media (max-width: 800px) {
@@ -457,10 +448,6 @@ a:hover {
         gap: 20px;
         width: 100%;
         align-items: flex-start;
-    }
-    
-    .neofetch-container .avatar-container {
-        width: 120px;
     }
     
     .neofetch-container .avatar-header {
@@ -508,12 +495,6 @@ a:hover {
     .code-header { padding: 6px 10px; font-size: 11px; }
     .post-content pre { padding: 10px; }
 
-    .page-index .neofetch-container {
-        grid-template-areas:
-            "avatar info"
-            "export export";
-    }
-
     .page-index .neofetch-container .export-block {
         margin-top: 10px;
         margin-bottom: 0;
@@ -552,22 +533,6 @@ a:hover {
         grid-area: neofetch;
         width: 100%;
         align-self: stretch;
-    }
-
-    .page-index .neofetch-container .avatar-container,
-    .page-post .neofetch-container .avatar-container {
-        height: 100%;
-        width: auto;
-        display: grid;
-        grid-template-rows: auto 1fr;
-    }
-
-    .page-index .neofetch-container .avatar-image,
-    .page-post .neofetch-container .avatar-image {
-        height: 100%;
-        aspect-ratio: 1 / 1;
-        width: auto;
-        justify-self: start;
     }
 
     .page-index .links-block,
