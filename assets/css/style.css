@@ -208,6 +208,13 @@ a:hover {
     display: block;
 }
 
+.declare-content {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1ch;
+    padding-left: 20px;
+}
+
 .center-col {
     font-size: 13px;
     width: 0;
