@@ -16,44 +16,24 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function renderMarks(root) {
-        const SKIP = new Set(['CODE', 'PRE', 'SCRIPT', 'STYLE', 'KBD', 'SAMP', 'TEXTAREA']);
-
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-            acceptNode(node) {
-                if (!/==[^=]+==/.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
-                let parent = node.parentElement;
-                while (parent && parent !== root) {
-                    if (SKIP.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
-                    parent = parent.parentElement;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-            }
+        let html = root.innerHTML;
+        
+        const codeBlocks = [];
+        
+        html = html.replace(/(<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>)/g, (match) => {
+            codeBlocks.push(match);
+            return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
         });
-
-        const textNodes = [];
-        let n;
-        while ((n = walker.nextNode())) textNodes.push(n);
-
-        for (const textNode of textNodes) {
-            const value = textNode.nodeValue;
-            const regex = /==([^=]+)==/g;
-            const fragment = document.createDocumentFragment();
-            let lastIndex = 0;
-            let match;
-            while ((match = regex.exec(value)) !== null) {
-                if (match.index > lastIndex) {
-                    fragment.appendChild(document.createTextNode(value.slice(lastIndex, match.index)));
-                }
-                const mark = document.createElement('mark');
-                mark.textContent = match[1].trim();
-                fragment.appendChild(mark);
-                lastIndex = match.index + match[0].length;
-            }
-            if (lastIndex < value.length) {
-                fragment.appendChild(document.createTextNode(value.slice(lastIndex)));
-            }
-            textNode.parentNode.replaceChild(fragment, textNode);
-        }
+        
+        html = html.replace(/==((?:(?!==).)*?)==/gs, (match, content) => {
+            return `<mark>${content}</mark>`;
+        });
+        
+        html = html.replace(/___CODE_BLOCK_(\d+)___/g, (match, index) => {
+            return codeBlocks[parseInt(index, 10)];
+        });
+        
+        root.innerHTML = html;
     }
 
     renderMarks(postContent);
