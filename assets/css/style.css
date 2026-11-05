@@ -441,6 +441,7 @@ a:hover {
         margin-top: 15px;
         margin-bottom: 0;
         padding-bottom: 0;
+        grid-column: 1 / -1;
     }
 
     .neofetch-container .export-content {
@@ -448,19 +449,14 @@ a:hover {
         padding-bottom: 0;
     }
 
-    .page-index .layout {
+    .layout {
         width: 100%;
     }
 
-    .page-index .neofetch-container {
-        flex: 1;
+    .neofetch-container {
         grid-template-areas:
             "avatar info"
             "export export";
-    }
-
-    .page-index .neofetch-container .export-block {
-        grid-column: 1 / -1;
     }
 }
 
@@ -537,7 +533,7 @@ a:hover {
     }
 }
 
-@media (min-width: 670px) and (max-width: 800px) {
+@media (min-width: 670px) and (max-width: 1024px) {
     .page-index .layout,
     .page-post .layout {
         display: grid;
