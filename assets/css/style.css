@@ -469,6 +469,7 @@ a:hover {
     }
 
     .page-index .neofetch-container .export-block {
+        grid-column: 1 / -1;
         margin-top: 15px;
         margin-bottom: 0;
         padding-bottom: 0;
