@@ -458,6 +458,23 @@ a:hover {
         word-break: break-word;
     }
     
+    .page-index .neofetch-container {
+        grid-template-areas:
+            "avatar info"
+            "export export";
+    }
+
+    .page-index .neofetch-container .export-block {
+        margin-top: 10px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .page-index .neofetch-container .export-content {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
     .links-block {
         width: 100%;
         height: auto;
@@ -494,17 +511,6 @@ a:hover {
     
     .code-header { padding: 6px 10px; font-size: 11px; }
     .post-content pre { padding: 10px; }
-
-    .page-index .neofetch-container .export-block {
-        margin-top: 10px;
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
-
-    .page-index .neofetch-container .export-content {
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
 
     .page-post .export-block {
         display: none;
