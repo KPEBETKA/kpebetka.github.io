@@ -273,9 +273,13 @@ a:hover {
 }
 
 .post-header {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     padding-bottom: 20px;
     border-bottom: 1px dashed var(--border);
+}
+
+.post-content > p:first-child {
+    margin-top: 0;
 }
 
 .article-title {
