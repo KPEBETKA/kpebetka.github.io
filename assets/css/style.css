@@ -136,7 +136,6 @@ a:hover {
 
 .neofetch-info .host {
     color: var(--accent);
-    font-weight: bold;
 }
 
 .neofetch-info .user-line {
@@ -210,22 +209,14 @@ a:hover {
 .syn-var { color: #9cdcfe; }
 .syn-string { color: #ce9178; }
 
-.indent {
-    padding-left: 20px;
-    display: block;
-}
-
-.declare-content {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    column-gap: 1ch;
-    padding-left: 20px;
-}
-
 .center-col {
     font-size: 13px;
     width: 0;
     min-width: 100%;
+}
+
+.post-block {
+    font-variant-numeric: tabular-nums;
 }
 
 .content-col {
@@ -651,32 +642,6 @@ a:hover {
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-}
-
-/* --- CRT ФИЛЬТР --- */
-
-html::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(168, 196, 168, 0.03) 45%,
-        rgba(168, 196, 168, 0.06) 50%,
-        rgba(168, 196, 168, 0.03) 55%,
-        transparent 100%
-    );
-    pointer-events: none;
-    z-index: 10001;
-    animation: crt-roll 10s linear infinite;
-}
-
-@keyframes crt-roll {
-    0% { top: -120px; }
-    100% { top: 100vh; }
 }
 
 body::before {

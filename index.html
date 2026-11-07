@@ -3,15 +3,15 @@ layout: default
 ---
 <main class="center-col">
   <div class="post-block">
+    <span class="syn-keyword">tree</span> <span class="syn-var">~/notes</span><br>
     {% for post in site.posts %}
-      <span class="syn-comment"># Date: {{ post.date | date: "%d.%m.%Y" }}</span><br>
-      <span class="syn-keyword">declare</span> <span class="syn-var">-A Note_{{ forloop.rindex | minus: 1 }}</span> = (<br>
-      <div class="declare-content">
-        <div class="declare-key">[<span class="syn-string">Title</span>]</div><div class="declare-val">= <a href="{{ post.url | relative_url }}" class="post-title-link">"{{ post.title | escape }}"</a></div>
-        <div class="declare-key">[<span class="syn-string">Desc</span>]</div><div class="declare-val">= <span class="syn-string">"{{ post.description | escape }}"</span></div>
-      </div>
-      )<br>
-      {% unless forloop.last %}<br>{% endunless %}
+      {% if forloop.last %}
+        <span class="syn-comment">└── {{ post.date | date: "%d.%m.%Y" }}</span> <a href="{{ post.url | relative_url }}" class="post-title-link" style="color: #ce9178;">{{ post.title | escape }}</a><br>
+        <span class="syn-comment">&nbsp;&nbsp;&nbsp;&nbsp;└──</span> {{ post.description | escape }}
+      {% else %}
+        <span class="syn-comment">├── {{ post.date | date: "%d.%m.%Y" }}</span> <a href="{{ post.url | relative_url }}" class="post-title-link" style="color: #ce9178;">{{ post.title | escape }}</a><br>
+        <span class="syn-comment">│&nbsp;&nbsp;&nbsp;└──</span> {{ post.description | escape }}<br>
+      {% endif %}
     {% endfor %}
   </div>
 </main>
