@@ -3,10 +3,8 @@ layout: default
 ---
 <main class="center-col">
   <div class="post-block">
-    <div class="tree-line" style="margin-bottom: 1em;">
-      <span class="syn-keyword">tree</span> <span class="syn-var">~/notes</span>
-    </div>
-    {% for post in site.posts %}
+    <div class="tree-line"><span class="syn-keyword">tree</span>&nbsp;<span class="syn-var">~/notes</span></div>
+    {%- for post in site.posts -%}
       <div class="tree-line tree-header">
         <span class="tree-prefix">{% if forloop.last %}&#9492;&#9472;&#9472;{% else %}&#9500;&#9472;&#9472;{% endif %} # {{ post.date | date: "%d.%m.%Y" }}</span>
         <span class="tree-dash"></span>
@@ -19,6 +17,6 @@ layout: default
         <span class="tree-prefix">{% if forloop.last %}&nbsp;&nbsp;&nbsp;&nbsp;{% else %}&#9474;&nbsp;&nbsp;&nbsp;{% endif %}&#9492;&#9472;&#9472; # </span>
         <span class="tree-content">{{ post.description | escape }}</span>
       </div>
-    {% endfor %}
+    {%- endfor -%}
   </div>
 </main>
