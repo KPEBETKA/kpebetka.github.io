@@ -13,6 +13,11 @@
     --page-glow: rgba(77, 184, 106, 0.04);
     --card-shadow: 0 0 20px rgba(77, 184, 106, 0.02), 0 8px 30px rgba(0, 0, 0, 0.55);
     --avatar-url: url('https://github.com/kpebetka.png');
+    
+    --scanline-opacity: 0.10;
+    --vignette-opacity: 0.35;
+    --glow-opacity: 0.30;
+    --glare-opacity: 0.05;
 }
 
 html {
@@ -47,6 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-shadow: 0 0 calc(4px * var(--glow-opacity)) currentColor;
 }
 
 a {
@@ -67,6 +73,7 @@ a:hover {
     gap: 25px;
     width: max-content;
     max-width: 100%;
+    z-index: 10;
 }
 
 .top-row {
@@ -339,6 +346,7 @@ a:hover {
     padding: 0 6px;
     border-radius: 4px;
     font-weight: 700;
+    text-shadow: none;
 }
 
 .code-container {
@@ -412,6 +420,7 @@ a:hover {
     background: transparent !important;
     padding: 0 !important;
     border: none !important;
+    text-shadow: none;
 }
 
 .img-block {
@@ -642,4 +651,87 @@ a:hover {
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+}
+
+/* --- CRT ФИЛЬТР --- */
+
+html::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(168, 196, 168, 0.03) 45%,
+        rgba(168, 196, 168, 0.06) 50%,
+        rgba(168, 196, 168, 0.03) 55%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 10001;
+    animation: crt-roll 10s linear infinite;
+}
+
+@keyframes crt-roll {
+    0% { top: -120px; }
+    100% { top: 100vh; }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: 
+        radial-gradient(
+            ellipse at center,
+            transparent 55%,
+            rgba(0, 0, 0, var(--vignette-opacity)) 100%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, var(--scanline-opacity)),
+            rgba(0, 0, 0, var(--scanline-opacity)) 1px,
+            transparent 1px,
+            transparent 3px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.02),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.02)
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, var(--glare-opacity)) 0%,
+            transparent 35%,
+            transparent 65%,
+            rgba(255, 255, 255, calc(var(--glare-opacity) * 0.4)) 100%
+        );
+    background-size: 100% 100%, 100% 3px, 3px 100%, 100% 100%;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(20, 25, 20, 0.08);
+    pointer-events: none;
+    z-index: 10000;
+    animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.92; }
+    50% { opacity: 1; }
+    100% { opacity: 0.92; }
 }
