@@ -227,7 +227,7 @@ a:hover {
 }
 
 .tree-line.tree-header {
-    align-items: center;
+    align-items: baseline;
 }
 
 .tree-prefix {
@@ -249,7 +249,7 @@ a:hover {
     flex: 1;
     border-bottom: 1px dashed var(--muted);
     margin-left: 8px;
-    margin-top: 2px; 
+    margin-bottom: 3px; 
 }
 
 .content-col {
