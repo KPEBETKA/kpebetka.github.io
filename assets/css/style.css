@@ -219,6 +219,39 @@ a:hover {
     font-variant-numeric: tabular-nums;
 }
 
+.tree-line {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+    width: 100%;
+}
+
+.tree-line.tree-header {
+    align-items: center;
+}
+
+.tree-prefix {
+    white-space: pre;
+    flex-shrink: 0;
+    color: var(--muted);
+}
+
+.tree-content {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--muted);
+}
+
+.tree-dash {
+    flex: 1;
+    border-bottom: 1px dashed var(--muted);
+    margin-left: 8px;
+    margin-top: 2px; 
+}
+
 .content-col {
     font-size: 14px;
     width: 0;
