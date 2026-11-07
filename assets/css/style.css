@@ -343,9 +343,21 @@ a:hover {
     border-left: 3px solid var(--accent);
     background: var(--surface);
     padding: 10px 15px;
-    margin-bottom: 1.5em;
+    margin: 1.5em 0;
     color: var(--muted);
     font-style: italic;
+    border-radius: 0 4px 4px 0;
+}
+
+.post-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.post-content blockquote blockquote {
+    border-left-color: var(--muted);
+    background: var(--bg);
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .post-content hr {

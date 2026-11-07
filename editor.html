@@ -32,7 +32,6 @@ sitemap: false
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
         ::selection { background: var(--accent); color: var(--bg); }
         
         body { 
@@ -162,14 +161,24 @@ sitemap: false
         .preview a:hover { text-decoration: underline; }
         .preview ul, .preview ol { margin-bottom: 1.2em; padding-left: 24px; }
         .preview li { margin-bottom: 0.5em; }
+
         .preview blockquote { 
             border-left: 3px solid var(--accent); 
             background-color: var(--surface); 
             padding: 10px 15px; 
-            margin-bottom: 1.5em; 
+            margin: 1.5em 0; 
             color: var(--muted); 
             font-style: italic; 
+            border-radius: 0 4px 4px 0;
         }
+        .preview blockquote p:last-child { margin-bottom: 0; }
+        .preview blockquote blockquote { 
+            border-left-color: var(--muted); 
+            background-color: var(--bg); 
+            margin-top: 10px; 
+            margin-bottom: 0; 
+        }
+
         .preview hr { border: 0; border-bottom: 1px dashed var(--border); margin: 2em 0; }
         
         .preview code:not(pre code) { 
